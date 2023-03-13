@@ -77,19 +77,18 @@
 // You should use for..in in your code, otherwise your solution may not pass this kata
 
 //Solution(s)
-function giveMeFive(obj){
-    const arr = new Array()
-    // length of key
-  for (k in obj){
-  
-    if(k.length === 5){
-      arr.push(k)
+function giveMeFive(obj) {
+  const arr = new Array();
+  // length of key
+  for (k in obj) {
+    if (k.length === 5) {
+      arr.push(k);
     }
-    // length of value 
-    const val = obj[k]
-    if(val.length === 5){
-      arr.push(val)
+    // length of value
+    const val = obj[k];
+    if (val.length === 5) {
+      arr.push(val);
     }
-  }
-    return arr
-  }
+  }2
+  return arr;
+}
