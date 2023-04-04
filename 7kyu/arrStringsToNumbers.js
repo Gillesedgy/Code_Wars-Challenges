@@ -18,6 +18,7 @@ Note that you can receive floats as well.
 // loop over the array of strings to then convert each to a number 
 // use a method to concert to numbers => Numbers , parseInt, parseFloat ... 
 
+//! Solution(s)
 const toNumberArray =(stringarray)=>{
 const numArr = []
 
@@ -28,3 +29,11 @@ return numArr
 }
 
 console.log(toNumberArray(["1.1","2.2","3.3"]))
+
+// function toNumberArray(stringarray) {
+//   const toNumber = [];
+//   stringarray.forEach(str => {
+//     toNumber.push(Number(str));
+//   });
+//   return toNumber;
+// }
