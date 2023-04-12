@@ -37,17 +37,15 @@ Notes
 In C, the returned value will be free'd. */
 
 //! Solution(s)
-const paintLetterboxes = (start, end)=> {
-    // create a frequency 
-      let fequency ={}
-      let result =new Array(10).fill(0)
-      for (let i=start; i<=end; i++){
-        for(let j of i.toString()){
-          result[j]++
-        }
-      }
-        return result
-      
-     
+const paintLetterboxes = (start, end) => {
+  // create a frequency
+  let fequency = {};
+  let result = new Array(10).fill(0);
+  for (let i = start; i <= end; i++) {
+    for (let j of i.toString()) {
+      result[j]++;
     }
-    console.log(paintLetterboxes(125,132)) //[ 1, 9, 6, 3, 0,1, 1, 1, 1, 1]
+  }
+  return result;
+};
+console.log(paintLetterboxes(125, 132)); //[ 1, 9, 6, 3, 0,1, 1, 1, 1, 1]
