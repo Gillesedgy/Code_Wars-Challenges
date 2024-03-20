@@ -15,8 +15,6 @@ Note: You should try give back the least amount of bills possible. For example, 
 
 */
 
-
-
 /*
 CQ:
 -Does array only contains 25, 50, 100 values.. No decimals? 
