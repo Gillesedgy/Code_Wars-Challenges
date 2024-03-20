@@ -34,148 +34,89 @@ totalTime(['01:20:00','40:00']); // --> '2 hours'
 totalTime(['12:00:00','10:00:00','02:00:00']); // --> '1 day'
 totalTime(['24:00:00','24:00:00','07']); // --> '2
  */
+
+//? My Understanding
+// have a function that takes an  array of number strings...
+// Each string represents  time  in either hours, minutes seconds
+// You should add all of the  time durations and return the total time  in  a specific format.. "(num) days, (num) hours, (num) minutes, (num) seconds"
+// Should only return arrays
+
+//? Given information
+// the array is a string of numbers
+// SHOULD return Days, Hours, Minutes, Seconds if the value is  greater than zero
+// Arrays have at least one string --> no need to check for empty arrays
+// Hours and Minutes are optional
+//Values will never be a negative number
+//* If a duration is less than 10 it will always be preceeded by a zero. (I.e. expect to always get this format: ["01:01:01"])
+
+//? Posibble  steps to solution
+// parse each string to identify hours, minutes, seconds
+// Once we access each string:
+// Seperate them by ():
+// assign them to their respective variables
+// Chnage them to numbers (b/c they are currently strings)
+// Convert them to seconds
+// Summ all values to get total time duration
+//  Once we have sum of all durations, convert them to days, hours, and seconds.
+// ToDO: have a varibale to store each value respectively
+// format them according to the rules.
+
 //! Solution
 
-// function totalTime(arr) {
-//   // Create and initialize varibales for days, hours, and minutes...
-//   let day = 0;
-//   let totalHours = 0;
-//   let totalMinutes = 0;
-//   let totalSecs = 0;
-
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i].includes(":")) {
-//       // split each value by the ":" and set them to the proper var respectively
-//       let [hrs, mins, secs] = arr[i].split(":"); // ['01:20:00','40:00'] => d,h,m 01 20 00 , d,h,m 40 00 undefined
-
-//       // Since the arr val are strings, convert to numbers
-//       totalHours += +hrs;
-//       totalMinutes += +mins;
-//       totalSecs += +secs;
-//     } else {
-//       totalSecs += +arr[i];
-//     }
-//   }
-//   // Initiazlize variables to there values in seconds... not really necessary but it helps me
-//   let secondsDay = 86400;
-//   let secondsHour = 3600;
-//   let secondsMin = 60;
-//   //   // Convert hours to seconds
-//   //   totalSecs += totalHours * secondsHour;
-
-//   //   // Convert minutes to seconds
-//   //   totalSecs += totalMinutes * secondsMin;
-//   //   // Sum up all values to then be calculated in seconds
-//   //   let totalTimeInSeconds =
-//   //     totalHours * secondsHour + totalMinutes * secondsMin + totalSecs;
-//   //   //* console.log("Total time in seconds", totalTimeInSecond)
-//   // Convert hours to seconds
-//   totalSecs += totalHours * secondsHour;
-
-//   // Convert minutes to seconds
-//   totalSecs += totalMinutes * secondsMin;
-
-//   // Let the MATH-ING begin => return the the result by dividing by total seconds and rounding
-//   day = Math.floor(totalSecs / secondsDay);
-//   totalSecs %= secondsDay;
-//   //* console.log("DAY!", day);
-
-//   let hours = Math.floor(totalSecs / secondsHour);
-//   totalSecs %= secondsHour;
-//   //*   console.log(hours);
-
-//   let minutes = Math.floor(totalSecs / secondsMin);
-//   totalSecs %= secondsMin;
-//   //* console.log(minutes);
-
-//   let result = "";
-//   // Fixing the result string based on the individual (days, hours, minutes)
-//   if (day > 0) {
-//     result += day + " day" + (day > 1 ? "s, " : ", ");
-//   }
-
-//   if (hours > 0) {
-//     result += hours + " hour" + (hours > 1 ? "s, " : ", ");
-//   }
-
-//   if (minutes > 0) {
-//     result += minutes + " minute" + (minutes > 1 ? "s, " : ", ");
-//   }
-
-//   // Add the remaining seconds if there are any or if the result is empty
-//   if (totalSecs > 0 || result === "") {
-//     result += totalSecs + " second" + (totalSecs !== 1 ? "s" : "");
-//   }
-//   //   if ((day === 0 && hours === 0 && minutes === 0) || totalTimeInSeconds > 0) {
-//   //     result +=
-//   //       totalTimeInSeconds + " second" + (totalTimeInSeconds !== 1 ? "s" : "");
-
-//   return result;
-// }
 function totalTime(arr) {
-    let day = 0;
-    let totalHours = 0;
-    let totalMinutes = 0;
-    let totalSeconds = 0;
-  
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].includes(":")) {
-          let [hrs, mins, secs] = arr[i].split(":");
-          // Check length of hours, minutes, and seconds components
-          if (hrs.length === 1) {
-            hrs = "0" + hrs;
-          }
-          if (mins.length === 1) {
-            mins = "0" + mins;
-          }
-          if (secs && secs.length === 1) {
-            secs = "0" + secs;
-          }
-          totalHours += +hrs;
-          totalMinutes += +mins;
-          totalSeconds += secs ? +secs : 0;
-        } else {
-          totalSeconds += +arr[i];
-        }
-      }
-  
-    let secondsInDay = 86400;
-    let secondsInHour = 3600;
-    let secondsInMinute = 60;
-  
-    totalSeconds += totalHours * secondsInHour;
-    totalSeconds += totalMinutes * secondsInMinute;
-  
-    day = Math.floor(totalSeconds / secondsInDay);
-    totalSeconds %= secondsInDay;
-  
-    let hours = Math.floor(totalSeconds / secondsInHour);
-    totalSeconds %= secondsInHour;
-  
-    let minutes = Math.floor(totalSeconds / secondsInMinute);
-    totalSeconds %= secondsInMinute;
-  
-    let result = "";
-   
-    if (day > 0) {
-      result += day + " day" + (day > 1 ? "s, " : ", ");
-    }
-  
-    if (hours > 0) {
-      result += hours + " hour" + (hours > 1 ? "s, " : ", ");
-    }
-  
-    if (minutes > 0) {
-      result += minutes + " minute" + (minutes > 1 ? "s, " : ", ");
-    }
-  
-    if (totalSeconds > 0 || result === "") {
-      result += totalSeconds + " second" + (totalSeconds !== 1 ? "s" : "");
-    }
-  
-    return result;
+  // initialize variable for day, hours, minutes, and seconds
+  let day = 0;
+  let totalHours = 0;
+  let totalMinutes = 0;
+  let totalSeconds = 0;
+
+  // iterate through each string in input arr
+  arr.forEach((time) => {
+    // seperate the durations
+    const durations = time.split(":").map((duration) => parseInt(duration, 10));
+    // assing them to vars
+    const [hrs = 0, mins = 0, secs = 0] =
+      durations.length === 3
+        ? durations
+        : durations.length === 2
+        ? [0, ...durations]
+        : [0, 0, ...durations];
+
+    // conversion
+    totalSeconds += secs + mins * 60 + hrs * 3600;
+  });
+
+  const secondsInDay = 86400;
+  const secondsInHour = 3600;
+  const secondsInMinute = 60;
+
+  // Calculate days, hours, minutes, and remaining seconds from total seconds.
+  day = Math.floor(totalSeconds / secondsInDay);
+  totalSeconds %= secondsInDay;
+
+  let hours = Math.floor(totalSeconds / secondsInHour);
+  totalSeconds %= secondsInHour;
+
+  let minutes = Math.floor(totalSeconds / secondsInMinute);
+  totalSeconds %= secondsInMinute;
+
+  // Construct the result string based on calculated time units.
+  let result = "";
+  if (day > 0) {
+    result += `${day} day${day > 1 ? "s" : ""}, `;
+  }
+  if (hours > 0) {
+    result += `${hours} hour${hours > 1 ? "s" : ""}, `;
+  }
+  if (minutes > 0) {
+    result += `${minutes} minute${minutes > 1 ? "s" : ""}, `;
+  }
+  if (totalSeconds > 0) {
+    result += `${totalSeconds} second${totalSeconds > 1 ? "s" : ""}`;
   }
 
+  return result.endsWith(", ") ? result.slice(0, -2) : result || "0";
+}
 
 console.log("totalTime:", totalTime(["60"]));
 
