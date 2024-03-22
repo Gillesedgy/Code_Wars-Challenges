@@ -65,7 +65,7 @@ function alphabetWar(fight) {
   // iterate through the letters
   for (let i = 0; i < fight.length; i++) {
     let letter = fight[i];
-    // check of the letter is a key in either the left or right => ___sideLetters[letter]
+    // check of the letter is a key in either the left or right => ___SideLetters[letter]
     if (leftSideLetters[letter]) {
       leftSideSum += leftSideLetters[letter];
     } else if (rightSideLetters[letter]) {
