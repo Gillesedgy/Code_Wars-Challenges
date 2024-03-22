@@ -49,13 +49,15 @@ function generateHashtag(str) {
     // console.log(wordArray[i]);
   }
   // add  hashtag
-  let hashtagWord = "#" + wordArray.join("");
+  let hashtagWordResult = "#" + wordArray.join("");
 
-  if (hashtagWord.length > 140) {
+  if (hashtagWordResult.length > 140) {
     return false;
   }
-  return hashtagWord;
+  return hashtagWordResult;
 }
+
+
 console.log(generateHashtag("")) // false, "Expected an empty string to return false"
 console.log(generateHashtag(" ".repeat(200))) // false, "Still an empty string"
 console.log(generateHashtag("Do We have A Hashtag")); // "#DoWeHaveAHashtag", "Expected a Hashtag (#) at the beginning.")
