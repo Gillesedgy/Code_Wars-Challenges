@@ -28,13 +28,14 @@ function well(arr) {
   // iterate through the array then again lol
   for (let array of arr) {
     for (let j = 0; j < array.length; j++) {
-      // check for string => typeof
+      // check for string => which type the  input is , then  turned everything to lowercase so i can check if its equal to the striung good.. (It will also work is u switch all input to uppercase as well.. as long asd u check if its also equal to "GOOd" in upprercase  :-) )        //
       if (typeof array[j] === "string" && array[j].toLowerCase() === "good") {
+        // if the condition is true => update the count by 1
         count++;
       }
     }
   }
-  // conditions fot return the proper values
+  // conditions to return the proper values according" to the rules => if there is no count for 'good', return fail..  if  "googd"  is found more than twice, its a series .. finally if "good"  is found  Once or twice, publish it
   if (count === 0) {
     return "Fail!";
   } else if (count > 2) {
